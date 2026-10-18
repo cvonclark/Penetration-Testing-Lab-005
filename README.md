@@ -46,7 +46,7 @@ smbclient //192.168.42.10/Finance -U 'CORP\jcarter'
 
 Inside the interactive SMB client:
 
-```text
+```
 ls
 get budget-demo.txt
 put smb-write-test.txt
@@ -130,8 +130,4 @@ Screenshots are in [`screenshots/`](screenshots/). Selected evidence:
 - **Permission inheritance matters:** parent-folder changes do not necessarily eliminate file-specific access already present.
 - **Verify remediation with the original account:** repeat the same operations that previously succeeded.
 
-## Interview talking point
 
-> “I built an isolated Active Directory SMB share assessment with a deliberately permissive Finance share. Using a standard domain account from Kali, I verified unauthorized file listing, downloading, and new-file upload with smbclient. I removed broad SMB and NTFS permissions and retested: all three operations returned access denied. During the final ACL review I also identified and removed a residual Full Control permission on an existing test file. I documented the before-and-after evidence and the limitation that I did not perform a new Kali retest after the final file-level cleanup.”
-
-**Safety note:** This project was performed on a host-only lab using fictional data. Do not reproduce these permissions on production resources.
